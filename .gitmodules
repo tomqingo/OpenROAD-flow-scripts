@@ -3,7 +3,8 @@
 	url = ../../The-OpenROAD-Project/yosys.git
 [submodule "tools/OpenROAD"]
 	path = tools/OpenROAD
-	url = ../OpenROAD.git
+	url = git@github.com:tomqingo/OpenROAD.git
+	branch = alpha
 [submodule "FlexPlanner-via"]
 	path = FlexPlanner-via
 	url = git@github.com:tomqingo/FlexPlanner-via.git
