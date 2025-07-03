@@ -1,6 +1,5 @@
 utl::set_metrics_stage "finish__{}"
 source $::env(SCRIPTS_DIR)/load.tcl
-erase_non_stage_variables final
 load_design 6_1_fill.odb 6_1_fill.sdc
 
 set_propagated_clock [all_clocks]
@@ -18,11 +17,11 @@ write_def $::env(RESULTS_DIR)/6_final.def
 write_verilog $::env(RESULTS_DIR)/6_final.v
 
 # Run extraction and STA
-if {[env_var_exists_and_non_empty RCX_RULES]} {
+if {[info exist ::env(RCX_RULES)]} {
 
   # Set RC corner for RCX
   # Set in config.mk
-  if {[env_var_exists_and_non_empty RCX_RC_CORNER]} {
+  if {[info exist ::env(RCX_RC_CORNER)]} {
     set rc_corner $::env(RCX_RC_CORNER)
   }
 
@@ -38,7 +37,7 @@ if {[env_var_exists_and_non_empty RCX_RULES]} {
   read_spef $::env(RESULTS_DIR)/6_final.spef
 
   # Static IR drop analysis
-  if {[env_var_exists_and_non_empty PWR_NETS_VOLTAGES]} {
+  if {[info exist ::env(PWR_NETS_VOLTAGES)] && [string length $::env(PWR_NETS_VOLTAGES)] > 0} {
     dict for {pwrNetName pwrNetVoltage}  {*}$::env(PWR_NETS_VOLTAGES) {
         set_pdnsim_net_voltage -net ${pwrNetName} -voltage ${pwrNetVoltage}
         analyze_power_grid -net ${pwrNetName} \
@@ -47,7 +46,7 @@ if {[env_var_exists_and_non_empty RCX_RULES]} {
   } else {
     puts "IR drop analysis for power nets is skipped because PWR_NETS_VOLTAGES is undefined"
   }
-  if {[env_var_exists_and_non_empty GND_NETS_VOLTAGES]} {
+  if {[info exist ::env(GND_NETS_VOLTAGES)] && [string length $::env(GND_NETS_VOLTAGES)] > 0} {
     dict for {gndNetName gndNetVoltage}  {*}$::env(GND_NETS_VOLTAGES) {
         set_pdnsim_net_voltage -net ${gndNetName} -voltage ${gndNetVoltage}
         analyze_power_grid -net ${gndNetName} \
@@ -61,8 +60,7 @@ if {[env_var_exists_and_non_empty RCX_RULES]} {
   puts "OpenRCX is not enabled for this platform."
 }
 
-report_cell_usage
-
+source $::env(SCRIPTS_DIR)/report_metrics.tcl
 report_metrics 6 "finish"
 
 # Save a final image if openroad is compiled with the gui

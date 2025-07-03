@@ -343,7 +343,7 @@ module DFF_X2 (CK, D, Q, QN);
    output QN;
    always @(posedge CK) begin
       Q <= D;
-      QN <= ~D;
+      Q <= ~D;
    end
 endmodule // DFF_X2
 

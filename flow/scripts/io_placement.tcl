@@ -1,10 +1,15 @@
 source $::env(SCRIPTS_DIR)/load.tcl
-erase_non_stage_variables place
+load_design 3_1_place_gp_skip_io.odb 2_floorplan.sdc
 
-if {![env_var_equals IS_CHIP 1]} {
-  load_design 3_1_place_gp_skip_io.odb 2_floorplan.sdc
-  source $::env(SCRIPTS_DIR)/io_placement_util.tcl
-  write_db $::env(RESULTS_DIR)/3_2_place_iop.odb
+if {[info exists ::env(FLOORPLAN_DEF)]} {
+    puts "Skipping IO placement as DEF file was used to initialize floorplan."
 } else {
-  log_cmd exec cp $::env(RESULTS_DIR)/3_1_place_gp_skip_io.odb $::env(RESULTS_DIR)/3_2_place_iop.odb
+  if {[info exists ::env(IO_CONSTRAINTS)]} {
+    source $::env(IO_CONSTRAINTS)
+  }
+  place_pins -hor_layer $::env(IO_PLACER_H) \
+           -ver_layer $::env(IO_PLACER_V) \
+           {*}$::env(PLACE_PINS_ARGS)
 }
+
+write_db $::env(RESULTS_DIR)/3_2_place_iop.odb

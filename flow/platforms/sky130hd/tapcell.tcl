@@ -1,3 +1,3 @@
 tapcell \
   -distance 14 \
-  -tapcell_master "$::env(TAP_CELL_NAME)"
+  -tapcell_master "sky130_fd_sc_hd__tapvpwrvgnd_1"

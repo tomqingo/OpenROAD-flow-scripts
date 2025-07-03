@@ -12,7 +12,7 @@ export OPENROAD=${DIR}/tools/OpenROAD
 echo "OPENROAD: ${OPENROAD}"
 
 export PATH=${DIR}/tools/install/OpenROAD/bin:$PATH
-export PATH=${DIR}/tools/install/yosys/bin:$PATH
+export PATH=${DIR}/tools/install/yosys/usr/local/bin:$PATH
 export PATH=${DIR}/dependencies/bin:$PATH
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
