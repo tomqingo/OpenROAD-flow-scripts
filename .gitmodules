@@ -5,7 +5,3 @@
 	path = tools/OpenROAD
 	url = git@github.com:tomqingo/OpenROAD.git
 	branch = alpha
-[submodule "tools/yosys"]
-	path = tools/yosys
-	url = git@github.com:The-OpenROAD-Project/yosys.git
-	branch = yosys-0.44
