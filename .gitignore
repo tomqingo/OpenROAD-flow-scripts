@@ -29,6 +29,11 @@ flow/rc_model.bin
 flow/*.tif.gz
 flow/*.def.v
 
+flow/data_openroad/
+flow/die_0.def
+flow/die_1.def
+flow/output_def.zip
+flow/output_def/
 
 # RePlAce deps
 *PORT9.dat
