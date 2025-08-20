@@ -103,9 +103,10 @@
 
 # Default design
 # DESIGN_CONFIG ?= ./designs/nangate45/gcd/config.mk
-DESIGN_CONFIG ?= ./designs/nangate45/ariane133/config.mk
-# DESIGN_CONFIG ?= ./designs/nangate45/ariane136/config.mk
+# DESIGN_CONFIG ?= ./designs/nangate45/ariane133/config.mk
+DESIGN_CONFIG ?= ./designs/nangate45/ariane136/config.mk
 # DESIGN_CONFIG ?= ./designs/nangate45/black_parrot/config.mk
+# DESIGN_CONFIG ?= ./designs/nangate45/tinyRocket/config.mk
 # DESIGN_CONFIG ?= ./designs/nangate45/bp_multi_top/config.mk
 # DESIGN_CONFIG ?= ./designs/nangate45/ariane133/config.mk
 # DESIGN_CONFIG ?= ./designs/sky130hd_fakestack/ariane136/config.mk
