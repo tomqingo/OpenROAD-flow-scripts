@@ -8,3 +8,7 @@
 	path = tools/OpenROAD
 	url = git@github.com:tomqingo/OpenROAD.git
 	branch = alpha
+[submodule "xyz_ibm"]
+	path = xyz_ibm
+	url = git@github.com:kkms-14/xyz_ibm.git
+	branch = floorplan
