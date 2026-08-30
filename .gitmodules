@@ -12,3 +12,6 @@
 	path = xyz_ibm
 	url = git@github.com:kkms-14/xyz_ibm.git
 	branch = floorplan
+[submodule "FlexPlanner_dieswap"]
+	path = FlexPlanner_dieswap
+	url = git@github.com:tomqingo/FlexPlanner_dieswap.git
